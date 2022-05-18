@@ -1,6 +1,6 @@
 # SAO-FCT-Autofill
 
-Bot to autofill sao fct with stuff so you don't have to cope with stupid spanish education system stupid forms :)
+Crawler that automates the process of writing the FCT SAO diary so you don't have to ;)
 
 ## Usage
 
