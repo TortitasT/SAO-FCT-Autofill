@@ -3,13 +3,23 @@ import time
 import pyperclip
 import random
 
+isMacOS = False
+def commandKey():
+    """
+    Returns the command key for the current keyboard layout.
+    """
+    if isMacOS:
+        return 'command'
+    else:
+        return 'ctrl'
+
 def pastewrite(text):
     """
     This is a work-around for the bug in pyautogui.write() with non-QWERTY keyboards
     It copies the text to clipboard and pastes it, instead of typing it.
     """
     pyperclip.copy(text)
-    pyautogui.hotkey('command', 'v')
+    pyautogui.hotkey(commandKey(), 'v')
     pyperclip.copy('')
 
 descriptions = open('descriptions.txt').read().splitlines()
@@ -27,6 +37,10 @@ weeks = int(input("How many weeks?"))
 while not weeks:
     weeks = int(input("How many weeks?"))
 
+isMacOSInput = input("Is this a MacOS keyboard? (y/n)")
+if isMacOSInput == 'y':
+    isMacOS = True
+
 print("Starting in 5 seconds, go to week 1 page and stay still...")
 
 time.sleep(5)
@@ -35,7 +49,7 @@ pyautogui.press("enter")
 time.sleep(1)
 pyautogui.press("f12")
 time.sleep(0.5)
-pyautogui.hotkey('command', 'alt', 'k')
+pyautogui.hotkey(commandKey(), 'alt', 'k')
 time.sleep(0.5)
 
 for i in range(weeks):
