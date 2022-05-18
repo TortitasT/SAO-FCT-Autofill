@@ -1,0 +1,3 @@
+Desarrollo de API en Laravel
+Desarrollo de frontend en Nuxt
+Estudio de Vue.js
