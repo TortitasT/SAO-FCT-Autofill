@@ -2,6 +2,7 @@ import pyautogui
 import time
 import pyperclip
 import random
+import requests
 
 def commandKey():
     """
@@ -92,14 +93,14 @@ for i in range(weeks):
         time.sleep(0.1)
 
     # Export to pdf
-    if export:
-        selector = "document.querySelectorAll('.botonform')[1].click()"
-        pastewrite(selector.format(i))
-        pyautogui.press("enter")
+    # if export:
+    #     selector = "document.querySelectorAll('.botonform')[1].click()"
+    #     pastewrite(selector.format(i))
+    #     pyautogui.press("enter")
 
-        time.sleep(1)
-        pyautogui.press("f12")
-        time.sleep(0.5)
+    #     time.sleep(1)
+    #     pyautogui.press("f12")
+    #     time.sleep(0.5)
 
         # TODO ❯ curl 'https://fct.edu.gva.es/inc/ajax/generar_pdf.php?doc=5&idFct=978096&centro=43&semanaDiario=21%2F03%2F2022-27%2F03%2F2022' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:100.0) Gecko/20100101 Firefox/100.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' -H 'Accept-Language: es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3' -H 'Accept-Encoding: gzip, deflate, br' -H 'Connection: keep-alive' -H 'Cookie: f5_cspm=1234; BIGipServerP_WEBEDU=1585848236.20480.0000; ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=session id' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-Fetch-Dest: document' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-Site: same-origin' -H 'If-Modified-Since: Fri, 20 May 2022 11:55:42 GMT' --output test.pdf
 
@@ -113,3 +114,12 @@ for i in range(weeks):
 
 pyautogui.press("f12")
 print("Done!")
+
+if export:
+    print("Exporting to pdf...")
+    startWeek = int(input("How many weeks?"))
+    while not startWeek:
+        startWeek = int(input("How many weeks?"))
+
+    for i in range(startWeek, weeks):
+        
