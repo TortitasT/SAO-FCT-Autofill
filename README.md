@@ -5,7 +5,7 @@ Crawler that automates the process of writing the FCT SAO diary so you don't hav
 ## Usage
 
 Install dependencies with
-`pip3 install pyautogui && pip3 install pyperclip`
+`pip3 install pyautogui pyperclip`
 
 Clone repo with
 `git clone https://github.com/TortitasT/SAO-FCT-Autofill`
