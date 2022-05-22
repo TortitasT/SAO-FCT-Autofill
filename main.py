@@ -156,13 +156,22 @@ if export:
             url = "https://fct.edu.gva.es/inc/ajax/generar_pdf.php?doc=5&idFct={}&centro={}&semanaDiario={}".format(env['IDFCT'], env['CENTER'], weekDates[i])
 
             headers = CaseInsensitiveDict()
-            headers["Cookie"] = "PHPSESSID={}".format(env['PHPSESSID'])
-            headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+                "Accept-Encoding": "gzip, deflate, br",
+                "Connection": "keep-alive",
+                "Cookie": "_ga=GA1.2.991372322.1631818129; __utma=192432508.991372322.1631818129.1635672972.1635672972.1; ZDEDebuggerPresent=php,phtml,php3; BIGipServerP_WEBEDU=1585848236.20480.0000; PHPSESSID={}".format(env['PHPSESSID']),
+                "Upgrade-Insecure-Requests": "1",
+                "Sec-Fetch-Dest": "document",
+                "Sec-Fetch-Mode": "navigate",
+                "Sec-Fetch-Site": "same-origin",
+            }
 
 
             resp = requests.get(url, headers=headers, stream=True)
-
-            print(resp.status_code)
 
             if(resp.status_code != 200):
                 raise Exception("Response failed") 
@@ -171,7 +180,7 @@ if export:
 
             with open(write_path, 'wb') as f:
                 f.write(resp.content)
-        except e:
+        except Exception as e:
             print(e)
             print("Error exporting week {}".format(i+1))
             continue
