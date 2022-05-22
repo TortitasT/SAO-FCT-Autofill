@@ -12,7 +12,7 @@ Crawler that automates the process of writing the FCT SAO diary so you don't hav
 
 - Set your randomized responses in descriptions.txt spaced by newlines.
 
-- Rename .env.example to .env and fill the variables with the parameters of the url with the same name and the session cookie value.
+- Rename .env.example to .env and fill in the variables with the parameters from the url of the pdf and the session cookie value.
 
 - Run:  
   `python3 main.py`
