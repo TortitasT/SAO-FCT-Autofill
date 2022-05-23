@@ -163,7 +163,7 @@ if export:
                 "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
                 "Accept-Encoding": "gzip, deflate, br",
                 "Connection": "keep-alive",
-                "Cookie": "_ga=GA1.2.991372322.1631818129; __utma=192432508.991372322.1631818129.1635672972.1635672972.1; ZDEDebuggerPresent=php,phtml,php3; BIGipServerP_WEBEDU=1585848236.20480.0000; PHPSESSID={}".format(env['PHPSESSID']),
+                "Cookie": "_ga=GA1.2.991372322.1631818129; __utma=192432508.991372322.1631818129.1635672972.1635672972.1; ZDEDebuggerPresent=php,phtml,php3; BIGipServerP_WEBEDU={}; PHPSESSID={}".format(env['BIGipServerP_WEBEDU'], env['PHPSESSID']),
                 "Upgrade-Insecure-Requests": "1",
                 "Sec-Fetch-Dest": "document",
                 "Sec-Fetch-Mode": "navigate",
